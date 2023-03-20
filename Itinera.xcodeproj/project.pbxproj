@@ -44,6 +44,7 @@
 		A0CB823D29C8936800DEBDF4 /* ItineraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ItineraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CB824129C8936800DEBDF4 /* ItineraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraUITests.swift; sourceTree = "<group>"; };
 		A0CB824329C8936800DEBDF4 /* ItineraUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BFB2B72529C8D6A2002E997A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 		A0CB822529C8936500DEBDF4 /* Itinera */ = {
 			isa = PBXGroup;
 			children = (
+				BFB2B72529C8D6A2002E997A /* Info.plist */,
 				A0CB822629C8936500DEBDF4 /* ItineraApp.swift */,
 				A0CB822829C8936500DEBDF4 /* ContentView.swift */,
 				A0CB822A29C8936700DEBDF4 /* Assets.xcassets */,
@@ -417,8 +419,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Itinera/Preview Content\"";
+				DEVELOPMENT_TEAM = 82TF5645TF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Itinera/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "for find the best way";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "for find the best way";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -445,8 +451,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Itinera/Preview Content\"";
+				DEVELOPMENT_TEAM = 82TF5645TF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Itinera/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "for find the best way";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "for find the best way";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
