@@ -6,47 +6,39 @@
 //
 
 import SwiftUI
-import MapKit
-import CoreLocation
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private let manager = CLLocationManager()
-
-    override init() {
-        super.init()
-        manager.delegate = self
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
-    }
-
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        if manager.authorizationStatus == .authorizedWhenInUse {
-            manager.startUpdatingLocation()
-        }
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            print(location)
-        }
-    }
-}
-
-struct MapsView: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    // ask for location permission
-    @State private var locationManger = LocationManager()
-
+struct SearchBarView: View {
+    let names = ["Holly", "Josh", "Rhonda", "Ted"]
+    @State private var searchText = ""
 
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
-                .ignoresSafeArea()
+        NavigationStack {
+            List {
+                ForEach(searchResults, id: \.self) { name in
+                    NavigationLink {
+                        Text(name)
+                    } label: {
+                        Text(name)
+                    }
+                }
+            }
+                    .navigationTitle("Contacts")
+        }
+                .searchable(text: $searchText)
+    }
+
+    var searchResults: [String] {
+        if searchText.isEmpty {
+            return names
+        } else {
+            return names.filter { $0.contains(searchText) }
+        }
     }
 }
 
 struct ContentView: View {
     var body: some View {
-        MapsView()
+        Home()
     }
 }
 
