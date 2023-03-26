@@ -18,7 +18,8 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
 
     @Published var fetchPlaces: [CLPlacemark] = []
 
-
+    @Published var selectedPlace: CLPlacemark?
+    
     override init() {
         super.init()
         manager.delegate = self
@@ -62,6 +63,7 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
     }
 
     func fetchPlaces(for query: String) {
+        selectedPlace = nil
         Task {
             do {
                 let request = MKLocalSearch.Request()
@@ -83,6 +85,14 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
         }
 
     }
+    
+    func selectPlace(_ placemark: CLPlacemark) {
+        selectedPlace = placemark
+        guard let location = placemark.location else { return }
+        let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        mapView.setCenter(coordinate, animated: true)
+    }
+
 
     // get longitude and latitude of the user
     func getLongitude() -> Double {
@@ -95,3 +105,4 @@ class LocationManager: NSObject, ObservableObject, MKMapViewDelegate, CLLocation
 
 
 }
+

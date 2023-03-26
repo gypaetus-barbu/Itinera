@@ -76,17 +76,20 @@ struct Home: View {
     @ViewBuilder
     func MapsList() -> some View {
         VStack (spacing: 25) {
-            if let places = locationManger.fetchPlaces, !places.isEmpty {
-
+            if !locationManger.fetchPlaces.isEmpty {
                 HStack (spacing: 12) {
-                    ForEach(places, id: \.self) { place in
-                        Text(place.name ?? "")
+                    ForEach(locationManger.fetchPlaces, id: \.self) { place in
+                        Button(action: {
+                            locationManger.selectPlace(place)
+                            updateLocation(lat: place.location?.coordinate.latitude ?? 0, long: place.location?.coordinate.longitude ?? 0)
+                        }) {
+                            Text(place.name ?? "")
                                 .font(.title3)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)
+                        }
                     }
                 }
-
             }
             ForEach (maps) { Map_search in
                 HStack (spacing: 12) {
